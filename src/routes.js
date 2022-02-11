@@ -10,6 +10,7 @@ import AppointmentController from "./app/controllers/AppointmentController";
 import ScheduleController from "./app/controllers/ScheduleController";
 import NotificationController from './app/controllers/NotificationController';
 import Appointment from "./app/models/Appointment";
+import AvailableController from "./app/controllers/AvailableController";
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -25,6 +26,7 @@ routes.put('/notifications/:id', auth, NotificationController.update)
 routes.get('/notifications/:id', auth, NotificationController.update)
 routes.get('/notifications', auth, NotificationController.index)
 routes.get('/providers', auth, ProviderController.index)
+routes.get('/providers/:providerId/available', AvailableController.index)
 routes.post('/files', auth, upload.single('file'), FileController.store)
 
 export default routes;
